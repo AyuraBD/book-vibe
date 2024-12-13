@@ -1,0 +1,6 @@
+.menu li .active{
+    background-color: transparent!important;
+    color: #23BE0A!important;
+    border: 1px solid #23BE0A!important;
+    font-weight: bold;
+}
