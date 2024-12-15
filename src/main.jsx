@@ -10,6 +10,7 @@ import BookDetails from './Components/BookDetails/BookDetails.jsx'
 import ListedBooks from './Components/ListedBooks/ListedBooks.jsx'
 import ListedBookDetails from './Components/ListedBookDetails/ListedBookDetails.jsx'
 import PagesToRead from './Components/PagesToRead/PagesToRead.jsx'
+import Reviews from './Reviews/Reviews.jsx'
 
 const router = new createBrowserRouter([
   {
@@ -40,6 +41,11 @@ const router = new createBrowserRouter([
         path:'/pagestoread',
         element:<PagesToRead></PagesToRead>,
         loader: ()=> fetch('../books.json')
+      },
+      {
+        path:'/reviews',
+        element:<Reviews></Reviews>,
+        loader: () => fetch('../reviews.json')
       }
     ]
   }

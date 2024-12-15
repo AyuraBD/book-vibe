@@ -1,0 +1,84 @@
+[
+    {
+      "id": 1,
+      "heading": "A Timeless Masterpiece",
+      "description": "This book captivated me with its deep characters and compelling story. A must-read for everyone!",
+      "category": "Fiction",
+      "ratings": 4.8,
+      "reviewer_name": "John Doe",
+      "image": "https://example.com/images/john_doe.jpg"
+    },
+    {
+      "id": 2,
+      "heading": "Inspiring and Thought-Provoking",
+      "description": "A beautifully written story that challenges your perspective on life and relationships.",
+      "category": "Drama",
+      "ratings": 4.5,
+      "reviewer_name": "Jane Smith",
+      "image": "https://example.com/images/jane_smith.jpg"
+    },
+    {
+      "id": 3,
+      "heading": "An Unforgettable Journey",
+      "description": "The author takes you on a rollercoaster of emotions through breathtaking storytelling.",
+      "category": "Adventure",
+      "ratings": 4.7,
+      "reviewer_name": "Emily Johnson",
+      "image": "https://example.com/images/emily_johnson.jpg"
+    },
+    {
+      "id": 4,
+      "heading": "Gripping and Suspenseful",
+      "description": "A thrilling mystery that kept me guessing till the very end. Perfect for fans of suspense!",
+      "category": "Mystery",
+      "ratings": 4.6,
+      "reviewer_name": "Michael Brown",
+      "image": "https://example.com/images/michael_brown.jpg"
+    },
+    {
+      "id": 5,
+      "heading": "A Practical Guide to Success",
+      "description": "Full of actionable insights and strategies. A perfect read for anyone seeking personal growth.",
+      "category": "Self-help",
+      "ratings": 4.9,
+      "reviewer_name": "Sophia Davis",
+      "image": "https://example.com/images/sophia_davis.jpg"
+    },
+    {
+      "id": 6,
+      "heading": "A Hilarious Read",
+      "description": "This book had me laughing out loud on every page. Highly recommended for a fun escape.",
+      "category": "Comedy",
+      "ratings": 4.3,
+      "reviewer_name": "Chris Wilson",
+      "image": "https://example.com/images/chris_wilson.jpg"
+    },
+    {
+      "id": 7,
+      "heading": "An Artistic Gem",
+      "description": "A beautifully illustrated book with profound messages hidden in its pages. Simply breathtaking.",
+      "category": "Art",
+      "ratings": 4.8,
+      "reviewer_name": "Olivia Martinez",
+      "image": "https://example.com/images/olivia_martinez.jpg"
+    },
+    {
+      "id": 8,
+      "heading": "A Heartwarming Tale",
+      "description": "A lovely story about family and friendship that warms your heart and leaves you smiling.",
+      "category": "Family",
+      "ratings": 4.4,
+      "reviewer_name": "Liam Anderson",
+      "image": "https://example.com/images/liam_anderson.jpg"
+    },
+    {
+      "id": 9,
+      "heading": "Eye-Opening Perspective",
+      "description": "An in-depth analysis of societal issues presented in a captivating and relatable way.",
+      "category": "Non-fiction",
+      "ratings": 4.7,
+      "reviewer_name": "Emma Taylor",
+      "image": "https://example.com/images/emma_taylor.jpg"
+    }
+  ]
+  
