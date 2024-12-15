@@ -3,7 +3,7 @@ import './Header.css'
 const Header = () => {
   const links = <>
     <li><NavLink className="hover:bg-[#bef0b6] border font-bold border-white hover:border hover:border-[#23BE0A] mr-2" to='/'>Home</NavLink></li>
-    <li><NavLink to='/listedbooks' className="hover:bg-[#bef0b6] border font-bold border-white hover:border hover:border-[#23BE0A] mr-2" to='/listedbooks'>Listed Books</NavLink></li>
+    <li><NavLink to='/listedbooks' className="hover:bg-[#bef0b6] border font-bold border-white hover:border hover:border-[#23BE0A] mr-2">Listed Books</NavLink></li>
     <li><NavLink className="hover:bg-[#bef0b6] border font-bold border-white hover:border hover:border-[#23BE0A] mr-2" to='/pagestoread'>Pages to Read</NavLink></li>
   </>
     

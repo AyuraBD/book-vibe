@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { getStoredBook, getWishlistBook } from "../../Utility/LocalStorage";
 import { FaAngleDown } from "react-icons/fa";
 import { GoPeople } from "react-icons/go";
@@ -11,7 +11,7 @@ const ListedBooks = () => {
   const books = useLoaderData();
   const [readBooks, setReadBooks] = useState([]);
   const [wishlistBook, setWishlistBook] = useState([]);
-	const read = useRef(null);
+
   useEffect(() => {
     const storedBook = getStoredBook();
     if (books) {
@@ -30,6 +30,12 @@ const ListedBooks = () => {
       setWishlistBook(listedWishlist);
     }
   }, [books]);
+
+	const navigate = useNavigate();
+
+	const handleListedBookDetails = (id)=>{
+		navigate(`/listedbookdetails/${id}`);
+	}
 
   return (
     <div className="lg:px-20 md:px-8 sm:px-6 max-sm:px-4">
@@ -110,7 +116,7 @@ const ListedBooks = () => {
 										<div className="pt-2 flex justify-start items-center lg:gap-4 md:gap-2 sm:gap-2 max-sm:gap-2">
 											<span className="text-fourth text-[15px] bg-[#328EFF26] px-2 py-1 rounded-full">Category : {readBook.category}</span>
 											<span className="text-fifth text-[15px] bg-[#FFAC3326] px-2 py-1 rounded-full">Ratings : {readBook.ratings}</span>
-											<button className="bg-main text-white text-[15px] px-2 py-1 rounded-full">View Details</button>
+											<button onClick={()=>handleListedBookDetails(readBook.book_id)} className="bg-main text-white text-[15px] px-2 py-1 rounded-full">View Details</button>
 										</div>
                   </div>
                 </div>
@@ -170,7 +176,7 @@ const ListedBooks = () => {
 										<div className="pt-2 flex justify-start items-center lg:gap-4 md:gap-2 sm:gap-2 max-sm:gap-2">
 											<span className="text-fourth text-[15px] bg-[#328EFF26] px-2 py-1 rounded-full">Category : {wishlistBook.category}</span>
 											<span className="text-fifth text-[15px] bg-[#FFAC3326] px-2 py-1 rounded-full">Ratings : {wishlistBook.ratings}</span>
-											<button className="bg-main text-white text-[15px] px-2 py-1 rounded-full">View Details</button>
+											<button onClick={()=>handleListedBookDetails(wishlistBook.book_id)} className="bg-main text-white text-[15px] px-2 py-1 rounded-full">View Details</button>
 										</div>
                   </div>
                 </div>
