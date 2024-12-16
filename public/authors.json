@@ -1,0 +1,74 @@
+[
+    {
+      "id": 1,
+      "img": "https://example.com/images/author1.jpg",
+      "name": "J.K. Rowling",
+      "short_bio": "Author of the Harry Potter series, known for her magical storytelling and imaginative worlds.",
+      "category": "Fantasy",
+      "awards": ["Hugo Award", "British Book Awards", "Locus Award"]
+    },
+    {
+      "id": 2,
+      "img": "https://example.com/images/author2.jpg",
+      "name": "George R.R. Martin",
+      "short_bio": "Renowned for his epic fantasy series 'A Song of Ice and Fire', the inspiration for Game of Thrones.",
+      "category": "Fantasy",
+      "awards": ["Hugo Award", "Nebula Award", "World Fantasy Award"]
+    },
+    {
+      "id": 3,
+      "img": "https://example.com/images/author3.jpg",
+      "name": "Agatha Christie",
+      "short_bio": "The Queen of Mystery, famous for her detective novels and beloved characters like Hercule Poirot.",
+      "category": "Mystery",
+      "awards": ["Edgar Award", "Mystery Writers of America Grand Master"]
+    },
+    {
+      "id": 4,
+      "img": "https://example.com/images/author4.jpg",
+      "name": "Stephen King",
+      "short_bio": "Master of horror and suspense, with iconic works such as 'The Shining' and 'It'.",
+      "category": "Horror",
+      "awards": ["Bram Stoker Award", "World Fantasy Award", "National Book Award"]
+    },
+    {
+      "id": 5,
+      "img": "https://example.com/images/author5.jpg",
+      "name": "Jane Austen",
+      "short_bio": "Pioneer of romantic fiction, known for timeless classics like 'Pride and Prejudice' and 'Sense and Sensibility'.",
+      "category": "Romance",
+      "awards": ["Legacy as one of the greatest English novelists"]
+    },
+    {
+      "id": 6,
+      "img": "https://example.com/images/author6.jpg",
+      "name": "Malcolm Gladwell",
+      "short_bio": "Bestselling author and journalist, known for exploring the unexpected in society and psychology.",
+      "category": "Non-fiction",
+      "awards": ["American Sociological Association Excellence Award"]
+    },
+    {
+      "id": 7,
+      "img": "https://example.com/images/author7.jpg",
+      "name": "Chimamanda Ngozi Adichie",
+      "short_bio": "Acclaimed Nigerian writer, celebrated for works like 'Half of a Yellow Sun' and 'Americanah'.",
+      "category": "Historical Fiction",
+      "awards": ["Orange Prize for Fiction", "National Book Critics Circle Award"]
+    },
+    {
+        "id": 8,
+        "img": "https://example.com/images/author8.jpg",
+        "name": "Mark Twain",
+        "short_bio": "Humorist and social critic, author of American classics like 'The Adventures of Huckleberry Finn'.",
+        "category": "Classics",
+        "awards": ["Legacy as the father of American literature"]
+      },
+      {
+        "id": 9,
+        "img": "https://example.com/images/author9.jpg",
+        "name": "Isabel Allende",
+        "short_bio": "Renowned Chilean-American writer, famous for her magical realist works such as 'The House of the Spirits'.",
+        "category": "Magical Realism",
+        "awards": ["National Book Award", "Hans Christian Andersen Literature Award"]
+      }
+    ] 
