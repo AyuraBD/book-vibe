@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { getStoredBook, getWishlistBook } from "../../Utility/LocalStorage";
-import { FaAngleDown } from "react-icons/fa";
 import { GoPeople } from "react-icons/go";
 import { LuFileSpreadsheet } from "react-icons/lu";
 import { CiLocationOn } from "react-icons/ci";
@@ -11,6 +10,11 @@ const ListedBooks = () => {
   const books = useLoaderData();
   const [readBooks, setReadBooks] = useState([]);
   const [wishlistBook, setWishlistBook] = useState([]);
+  const [sortedData, setSortedData] = useState([]);
+  const [sortWishlistData, setSortWishlistData] = useState([]);
+  const [sortKey, setSortKey] = useState("");
+  const [selectedType, setSelectedType] = useState("read");
+
 
   useEffect(() => {
     const storedBook = getStoredBook();
@@ -37,33 +41,56 @@ const ListedBooks = () => {
 		navigate(`/listedbookdetails/${id}`);
 	}
 
+  // Sorting Read books
+
+  useEffect(()=>{
+    if(selectedType === "read"){
+      if(sortKey){
+        const sorted = [...readBooks].sort((a,b)=>b[sortKey] - a[sortKey]);
+        setSortedData(sorted);
+      }else{
+        setSortedData(readBooks);
+      }
+    } else if(selectedType === "wishlist"){
+      if(sortKey){
+        const sortedWishlist = [...wishlistBook].sort((a,b)=>b[sortKey] - a[sortKey]);
+        setSortWishlistData(sortedWishlist);
+      }else{
+        setSortWishlistData(wishlistBook);
+      }
+    }
+  },[selectedType, sortKey, readBooks, wishlistBook]);
+
+  const handleSorting = (e) =>{
+    setSortKey(e.target.value);
+  }
+
+  const handleTypeChange = (e) =>{
+    setSortKey("");
+    setSelectedType(e);
+  }
+  console.log('Read',sortedData)
+  console.log('Wisht',sortWishlistData);
+
+  
   return (
     <div className="lg:px-20 md:px-8 sm:px-6 max-sm:px-4 lg:py-12 md:py-8 sm:py-6 max-sm:py-6">
       <div className="bg-third text-center font-bold font-worksans lg:text-3xl md:text-2xl sm:text-2xl max-sm:text-xl mb-4 py-3 rounded-lg">
         <h3>Books</h3>
       </div>
       <div className="mb-5 flex justify-center w-full right-20">
-        <details className="dropdown">
-          <summary className="bg-main cursor-pointer px-5 rounded-md text-white font-worksans font-semibold py-2 flex justify-center items-center m-1">
-            Sort By <FaAngleDown></FaAngleDown>
-          </summary>
-          <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow bg-third">
-            <li>
-              <a>Rating</a>
-            </li>
-            <li>
-              <a>Number of Pages</a>
-            </li>
-            <li>
-              <a href="">Published Year</a>
-            </li>
-          </ul>
-        </details>
+        <select value={sortKey} onChange={handleSorting} className="select select-primary w-full max-w-xs">
+          <option value="">Sort By</option>
+          <option value="ratings">Ratings</option>
+          <option value="total_pages">Number of pages</option>
+          <option value="year_of_publish">Published Year</option>
+        </select>
       </div>
       {/* Listed books container */}
       <div>
       <div role="tablist" className="tabs tabs-lifted">
 				<input
+            onClick={()=>handleTypeChange("read")}
             type="radio"
             name="my_tabs_2"
             role="tab"
@@ -72,7 +99,7 @@ const ListedBooks = () => {
 						defaultChecked="true"
           />
           <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box lg:p-6 md:p-4 sm:p-2 max-sm:p-2">
-            {readBooks.map((readBook) => (
+            {sortedData.map((readBook) => (
               <div key={readBook.book_id} className="border border-third p-3 rounded-lg flex lg:flex-row md:flex-row sm:flex-col max-sm:flex-col justify-start items-center mb-4 lg:gap-6 md:gap-6 sm:gap-3 max-sm:gap-3">
                 <div className="lg:w-1/5 md:w-2/5 sm:w-full max-sm:w-full flex justify-center items-center bg-third p-2 rounded-lg">
                   <img className="lg:w-5/6 md:w-4/6 sm:w-2/6 max-sm:w-3/6" src={readBook.img} alt=""/>
@@ -124,7 +151,8 @@ const ListedBooks = () => {
             ))}
           </div>
 				{/* Wishlist Books */}
-					<input 
+					<input
+            onClick={()=>handleTypeChange("wishlist")}
             type="radio"
             name="my_tabs_2"
             role="tab"
@@ -132,7 +160,7 @@ const ListedBooks = () => {
             aria-label="Wishlist Books"
           />
           <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box lg:p-6 md:p-4 sm:p-2 max-sm:p-2">
-            {wishlistBook.map((wishlistBook) => (
+            {sortWishlistData.map((wishlistBook) => (
               <div key={wishlistBook.book_id} className="border border-third p-3 rounded-lg flex lg:flex-row md:flex-row sm:flex-col max-sm:flex-col justify-start items-center mb-4 lg:gap-6 md:gap-6 sm:gap-3 max-sm:gap-3">
                 <div className="lg:w-1/5 md:w-2/5 sm:w-full max-sm:w-full flex justify-center items-center bg-third p-2 rounded-lg">
                   <img className="lg:w-5/6 md:w-4/6 sm:w-2/6 max-sm:w-3/6" src={wishlistBook.img} alt=""/>
