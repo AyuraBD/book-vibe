@@ -199,10 +199,10 @@ const ListedBooks = () => {
                         <p className="">{wishlistBook.total_pages}</p>
                       </div>
                     </div>
-										<div className="pt-2 flex justify-start items-center lg:gap-4 md:gap-2 sm:gap-2 max-sm:gap-2">
-											<span className="text-fourth text-[15px] bg-[#328EFF26] px-2 py-1 rounded-full">Category : {wishlistBook.category}</span>
-											<span className="text-fifth text-[15px] bg-[#FFAC3326] px-2 py-1 rounded-full">Ratings : {wishlistBook.ratings}</span>
-											<button onClick={()=>handleListedBookDetails(wishlistBook.book_id)} className="bg-main text-white text-[15px] px-2 py-1 rounded-full">View Details</button>
+										<div className="pt-2 flex justify-start items-center lg:gap-4 md:gap-2 sm:gap-2 max-sm:gap-1">
+											<span className="text-fourth lg:text-[15px] bg-[#328EFF26] lg:px-2 md:px-2 sm:px-2 max-sm:px-1 md:text-[15px] sm:text-[15px] max-sm:text-[14px] py-1 rounded-full">Category : {wishlistBook.category}</span>
+											<span className="text-fifth lg:text-[15px] bg-[#FFAC3326] lg:px-2 md:px-2 sm:px-2 max-sm:px-1 md:text-[15px] sm:text-[15px] max-sm:text-[14px] py-1 rounded-full">Ratings : {wishlistBook.ratings}</span>
+											<button onClick={()=>handleListedBookDetails(wishlistBook.book_id)} className="bg-main text-white lg:text-[15px] lg:px-2 md:px-2 sm:px-2 max-sm:px-1 md:text-[15px] sm:text-[15px] max-sm:text-[14px] py-1 rounded-full">View Details</button>
 										</div>
                   </div>
                 </div>
