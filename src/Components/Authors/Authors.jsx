@@ -4,7 +4,7 @@ import { useLoaderData } from 'react-router-dom'
 const Authors = () => {
     const authors = useLoaderData();
   return (
-    <div className="lg:px-20 md:px-8 sm:px-6 max-sm:px-4 lg:py-12 md:py-8 sm:py-6 max-sm:py-6">
+    <div className="min-h-lvh lg:px-20 md:px-8 sm:px-6 max-sm:px-4 lg:py-12 md:py-8 sm:py-6 max-sm:py-6">
       <div className="bg-third text-center font-bold font-worksans lg:text-3xl md:text-2xl sm:text-2xl max-sm:text-xl mb-4 py-3 rounded-lg">
         <h3>Authors</h3>
       </div>      

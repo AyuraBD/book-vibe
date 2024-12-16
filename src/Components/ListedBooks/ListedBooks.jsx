@@ -77,7 +77,7 @@ const ListedBooks = () => {
         <h3>Books</h3>
       </div>
       <div className="mb-5 flex justify-center w-full right-20">
-        <select value={sortKey} onChange={handleSorting} className="select select-primary w-full max-w-xs">
+        <select value={sortKey} onChange={handleSorting} className="select select-primary w-full max-w-xs bg-main text-white font-semibold border-0 focus:border-0 focus:outline-0">
           <option value="">Sort By</option>
           <option value="ratings">Ratings</option>
           <option value="total_pages">Number of pages</option>
