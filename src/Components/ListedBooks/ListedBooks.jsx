@@ -15,7 +15,12 @@ const ListedBooks = () => {
   const [sortKey, setSortKey] = useState("");
   const [selectedType, setSelectedType] = useState("read");
 
+  const navigate = useNavigate();
 
+	const handleListedBookDetails = (id)=>{
+		navigate(`/listedbookdetails/${id}`);
+	}
+  // Loading data from Database and localStorage and matching data with id
   useEffect(() => {
     const storedBook = getStoredBook();
     if (books) {
@@ -25,6 +30,7 @@ const ListedBooks = () => {
       setReadBooks(listedBook);
     }
   }, [books]);
+  // Loading data from Database and localStorage and matching data with id
   useEffect(() => {
     const wishlistBook = getWishlistBook();
     if (books) {
@@ -34,12 +40,6 @@ const ListedBooks = () => {
       setWishlistBook(listedWishlist);
     }
   }, [books]);
-
-	const navigate = useNavigate();
-
-	const handleListedBookDetails = (id)=>{
-		navigate(`/listedbookdetails/${id}`);
-	}
 
   // Sorting Read books
 
@@ -61,6 +61,7 @@ const ListedBooks = () => {
     }
   },[selectedType, sortKey, readBooks, wishlistBook]);
 
+
   const handleSorting = (e) =>{
     setSortKey(e.target.value);
   }
@@ -69,9 +70,6 @@ const ListedBooks = () => {
     setSortKey("");
     setSelectedType(e);
   }
-  console.log('Read',sortedData)
-  console.log('Wisht',sortWishlistData);
-
   
   return (
     <div className="lg:px-20 md:px-8 sm:px-6 max-sm:px-4 lg:py-12 md:py-8 sm:py-6 max-sm:py-6">
