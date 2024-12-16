@@ -2,11 +2,11 @@ import { Link, NavLink } from "react-router-dom";
 import './Header.css'
 const Header = () => {
   const links = <>
-    <li><NavLink className="hover:bg-[#bef0b6] border font-bold border-white hover:border hover:border-[#23BE0A] mr-2" to='/'>Home</NavLink></li>
-    <li><NavLink className="hover:bg-[#bef0b6] border font-bold border-white hover:border hover:border-[#23BE0A] mr-2" to='/listedbooks' >Listed Books</NavLink></li>
-    <li><NavLink className="hover:bg-[#bef0b6] border font-bold border-white hover:border hover:border-[#23BE0A] mr-2" to='/pagestoread'>Pages to Read</NavLink></li>
-    <li><NavLink className="hover:bg-[#bef0b6] border font-bold border-white hover:border hover:border-[#23BE0A] mr-2" to='/reviews'>Reviews</NavLink></li>
-    <li><NavLink className="hover:bg-[#bef0b6] border font-bold border-white hover:border hover:border-[#23BE0A] mr-2" to='/authors'>Authors</NavLink></li>
+    <li><NavLink className="hover:bg-[#bef0b6] border font-bold border-white hover:border hover:border-[#23BE0A]" to='/'>Home</NavLink></li>
+    <li><NavLink className="hover:bg-[#bef0b6] border font-bold border-white hover:border hover:border-[#23BE0A]" to='/listedbooks' >Listed Books</NavLink></li>
+    <li><NavLink className="hover:bg-[#bef0b6] border font-bold border-white hover:border hover:border-[#23BE0A]" to='/pagestoread'>Pages to Read</NavLink></li>
+    <li><NavLink className="hover:bg-[#bef0b6] border font-bold border-white hover:border hover:border-[#23BE0A]" to='/reviews'>Reviews</NavLink></li>
+    <li><NavLink className="hover:bg-[#bef0b6] border font-bold border-white hover:border hover:border-[#23BE0A]" to='/authors'>Authors</NavLink></li>
   </>
     
   return (
@@ -36,7 +36,7 @@ const Header = () => {
         <Link to='/' className="lg:text-3xl md:text-2xl sm:text-2xl max-sm:text-xl font-bold">Book Vibe</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 gap-1">
+        <ul className="menu menu-horizontal px-1 gap-2">
           {links}
         </ul>
       </div>
