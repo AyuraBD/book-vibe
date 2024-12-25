@@ -1,0 +1,21 @@
+.continue{
+    position: relative;
+}
+.continue::before{
+    content: '';
+    width:36%;
+    height:1px;
+    background-color: rgb(209, 205, 205);
+    position: absolute;
+    left:0;
+    top:50%;
+}
+.continue::after{
+    content: '';
+    width:36%;
+    height:1px;
+    background-color: rgb(209, 205, 205);
+    position: absolute;
+    right:0;
+    top:50%;
+}

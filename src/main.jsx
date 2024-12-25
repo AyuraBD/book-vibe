@@ -12,6 +12,9 @@ import ListedBookDetails from './Components/ListedBookDetails/ListedBookDetails.
 import PagesToRead from './Components/PagesToRead/PagesToRead.jsx'
 import Reviews from './Reviews/Reviews.jsx'
 import Authors from './Components/Authors/Authors.jsx'
+import SignUp from './Components/SignUp/SignUp.jsx'
+import SignIn from './Components/SingIn/SignIn.jsx'
+import ForgotPassword from './Components/ForgotPassword/ForgotPassword.jsx'
 
 const router = new createBrowserRouter([
   {
@@ -52,6 +55,18 @@ const router = new createBrowserRouter([
         path:'/authors',
         element: <Authors></Authors>,
         loader: () => fetch('../authors.json')
+      },
+      {
+        path:'/signup',
+        element:<SignUp></SignUp>
+      },
+      {
+        path:'signin',
+        element:<SignIn></SignIn>
+      },
+      {
+        path:'/forgot-password',
+        element:<ForgotPassword></ForgotPassword>
       }
     ]
   }
