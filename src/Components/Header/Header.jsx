@@ -1,13 +1,26 @@
 import { Link, NavLink } from "react-router-dom";
 import './Header.css'
+import { useContext } from "react";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 const Header = () => {
+  const {user, authLogOut, loading} = useContext(AuthContext);
+
   const links = <>
     <li><NavLink className="hover:bg-[#bef0b6] border font-bold border-white hover:border hover:border-[#23BE0A]" to='/'>Home</NavLink></li>
     <li><NavLink className="hover:bg-[#bef0b6] border font-bold border-white hover:border hover:border-[#23BE0A]" to='/listedbooks' >Listed Books</NavLink></li>
     <li><NavLink className="hover:bg-[#bef0b6] border font-bold border-white hover:border hover:border-[#23BE0A]" to='/pagestoread'>Pages to Read</NavLink></li>
     <li><NavLink className="hover:bg-[#bef0b6] border font-bold border-white hover:border hover:border-[#23BE0A]" to='/reviews'>Reviews</NavLink></li>
     <li><NavLink className="hover:bg-[#bef0b6] border font-bold border-white hover:border hover:border-[#23BE0A]" to='/authors'>Authors</NavLink></li>
+    {
+      user && <li><NavLink className="hover:bg-[#bef0b6] border font-bold border-white hover:border hover:border-[#23BE0A]" to='/profile'>Profile</NavLink></li>
+    }
   </>
+  const handleSignOut = () =>{
+    if(loading){
+      return <span className="loading loading-ring loading-lg"></span>
+    }
+    authLogOut();
+  }
     
   return (
       <div className="navbar bg-base-100 lg:px-20 md:px-12 sm:px-8 max-sm:px-4 mb-5 font-worksans">
@@ -41,8 +54,17 @@ const Header = () => {
         </ul>
       </div>
       <div className="navbar-end gap-3">
-        <Link to='/signin' className="bg-main px-3 py-2 text-white rounded-md font-semibold">Sign In</Link>
-        <Link to='/signup' className="bg-second px-3 py-2 text-white rounded-md font-semibold">Sign Up</Link>
+        {user ? 
+        <>
+          <p>{user?.displayName}</p>
+          <button onClick={handleSignOut} className="text-white py-2 px-3 bg-neutral-400 rounded-md ">Log Out</button>
+        </>
+        :
+        <>
+          <Link to='/signin' className="bg-main px-3 py-2 text-white rounded-md font-semibold">Sign In</Link>
+          <Link to='/signup' className="bg-second px-3 py-2 text-white rounded-md font-semibold">Sign Up</Link>
+        </>
+        }
       </div>
     </div>
   );

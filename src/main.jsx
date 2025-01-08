@@ -15,6 +15,9 @@ import Authors from './Components/Authors/Authors.jsx'
 import SignUp from './Components/SignUp/SignUp.jsx'
 import SignIn from './Components/SingIn/SignIn.jsx'
 import ForgotPassword from './Components/ForgotPassword/ForgotPassword.jsx'
+import AuthProvider from './Components/AuthProvider/AuthProvider.jsx'
+import Profile from './Components/Profile/Profile.jsx'
+import PrivateRoute from './PrivateRoute/PrivateRoute.jsx'
 
 const router = new createBrowserRouter([
   {
@@ -67,6 +70,10 @@ const router = new createBrowserRouter([
       {
         path:'/forgot-password',
         element:<ForgotPassword></ForgotPassword>
+      },
+      {
+        path:'/profile',
+        element: <PrivateRoute><Profile></Profile></PrivateRoute>
       }
     ]
   }
@@ -74,8 +81,9 @@ const router = new createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router}>
-
-    </RouterProvider>
+    <AuthProvider>
+      <RouterProvider router={router}>
+      </RouterProvider>
+    </AuthProvider>
   </StrictMode>,
 )

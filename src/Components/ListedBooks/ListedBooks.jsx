@@ -97,7 +97,8 @@ const ListedBooks = () => {
 						defaultChecked="true"
           />
           <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box lg:p-6 md:p-4 sm:p-2 max-sm:p-2">
-            {sortedData.map((readBook) => (
+            {readBooks.length ? <>
+              {sortedData.map((readBook) => (
               <div key={readBook.book_id} className="border border-third lg:p-3 md:p-3 sm:p-3 max-sm:p-1 rounded-lg flex lg:flex-row md:flex-row sm:flex-col max-sm:flex-col justify-start items-center mb-4 lg:gap-6 md:gap-6 sm:gap-3 max-sm:gap-3">
                 <div className="lg:w-1/5 md:w-2/5 sm:w-full max-sm:w-full flex justify-center items-center bg-third p-2 rounded-lg">
                   <img className="lg:w-5/6 md:w-4/6 sm:w-2/6 max-sm:w-3/6" src={readBook.img} alt=""/>
@@ -147,6 +148,9 @@ const ListedBooks = () => {
                 </div>
               </div>
             ))}
+            </>
+            : <p>Nothing selected to the Read books yet.</p>  
+          }
           </div>
 				{/* Wishlist Books */}
 					<input
@@ -158,7 +162,10 @@ const ListedBooks = () => {
             aria-label="Wishlist Books"
           />
           <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box lg:p-6 md:p-4 sm:p-2 max-sm:p-2">
-            {sortWishlistData.map((wishlistBook) => (
+            {
+              wishlistBook.length ?
+              <>
+                {sortWishlistData.map((wishlistBook) => (
               <div key={wishlistBook.book_id} className="border border-third lg:p-3 md:p-3 sm:p-3 max-sm:p-1 rounded-lg flex lg:flex-row md:flex-row sm:flex-col max-sm:flex-col justify-start items-center mb-4 lg:gap-6 md:gap-6 sm:gap-3 max-sm:gap-3">
                 <div className="lg:w-1/5 md:w-2/5 sm:w-full max-sm:w-full flex justify-center items-center bg-third p-2 rounded-lg">
                   <img className="lg:w-5/6 md:w-4/6 sm:w-2/6 max-sm:w-3/6" src={wishlistBook.img} alt=""/>
@@ -208,6 +215,9 @@ const ListedBooks = () => {
                 </div>
               </div>
             ))}
+              </>
+              : <p>Nothing selected to the Wishlist books yet.</p>
+            }
           </div>
         </div>
       </div>

@@ -1,20 +1,18 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import signinImg from './../../assets/signin.png'
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { FaEye, FaEyeSlash, FaFacebook, FaTwitter } from 'react-icons/fa';
-import { FacebookAuthProvider, getAuth, sendEmailVerification, signInWithEmailAndPassword, signInWithPopup} from 'firebase/auth';
-import app from '../../Firebase/firebase.config';
+import { sendEmailVerification} from 'firebase/auth';
 import { toast, ToastContainer } from 'react-toastify';
 import { FcGoogle } from 'react-icons/fc';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { AuthContext } from '../AuthProvider/AuthProvider';
 
 
 const SignIn = () => {
-  const auth = getAuth(app);
-  const provider = new GoogleAuthProvider();
-  const fbProvider = new FacebookAuthProvider();
+  const {signIn, signInWithGoogle, signInWithFb, loading} = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState('');  
+  const [error, setError] = useState(''); 
+  const navigate = useNavigate(); 
 
   // Show or hide password
     const handleShowPassword = (e) =>{
@@ -27,8 +25,9 @@ const SignIn = () => {
       const target = e.target;
       const email = target.email.value;
       const password = target.password.value;
-      signInWithEmailAndPassword(auth, email, password)
+      signIn(email, password)
       .then((res)=>{
+        
         if(!res.user.emailVerified){
           sendEmailVerification(res.user)
           .then(()=>{
@@ -37,7 +36,13 @@ const SignIn = () => {
           .catch(()=>{})
           return;
         }
+        if(loading){
+          return <span className="loading loading-ring loading-lg"></span>
+        }
         toast.success('Signed in Successfully.');
+        console.log(res.user);
+        target.reset();
+        navigate('/');
       })
       .catch((err)=>{
         setError(err.message);
@@ -46,7 +51,7 @@ const SignIn = () => {
 
     // Sign in with google
     const handleSignInWithGoogle = () =>{
-      signInWithPopup(auth, provider)
+      signInWithGoogle()
       .then(() =>{
         toast.success('Signed in successfully with google')
       }).catch((err) =>{
@@ -55,7 +60,7 @@ const SignIn = () => {
       })
     }
     const handleSignInWithFacebook = () =>{
-      signInWithPopup(auth, fbProvider)
+      signInWithFb()
       .then(() =>{
         toast.success('Signed in with popup using facebook.')
       }).catch(err =>{

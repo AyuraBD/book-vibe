@@ -3,11 +3,10 @@ import forgotPasswordImg from './../../assets/forgot-password.png'
 import { Link } from 'react-router-dom'
 import { MdArrowBack } from 'react-icons/md'
 import { useState } from 'react'
-import { getAuth, sendPasswordResetEmail } from 'firebase/auth'
-import app from '../../Firebase/firebase.config'
+import { sendPasswordResetEmail } from 'firebase/auth'
+import auth from '../../Firebase/firebase.config'
 
 const ForgotPassword = () => {
-    const auth = getAuth(app);
     const [error, setError] = useState('');
 
     const handleForgotPassword = e =>{
@@ -19,7 +18,7 @@ const ForgotPassword = () => {
         .then(() =>{
             toast.success('We have sent you a link to your email to reset your password.')
         }).catch(err =>{
-            setError(err.message)
+            setError(err.message);
         })
     }
   return (

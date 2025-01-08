@@ -1,18 +1,17 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import signupImg from './../../assets/signup.png'
 import './SignUp.css'
-import { FaEye, FaEyeSlash, FaFacebook } from 'react-icons/fa'
-import { FaTwitter } from 'react-icons/fa6'
-import { useState } from 'react'
-import { createUserWithEmailAndPassword, getAuth, sendEmailVerification, updateProfile } from 'firebase/auth'
-import app from './../../Firebase/firebase.config'
+import { FaEye, FaEyeSlash} from 'react-icons/fa'
+import { useContext, useState } from 'react'
+import { sendEmailVerification, updateProfile } from 'firebase/auth'
 import { toast, ToastContainer } from 'react-toastify'
-import { FcGoogle } from 'react-icons/fc'
+import { AuthContext } from '../AuthProvider/AuthProvider'
+
 const SignUp = () => {
+  const {signUp, loading} = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
-  const auth = getAuth(app);
+  const navigate = useNavigate();
   // Show and hide password
   const handleShowPassword = (e) =>{
     setShowPassword(e)
@@ -23,28 +22,31 @@ const SignUp = () => {
     const name = target.name.value;
     const email = target.email.value;
     const password = target.password.value;
-    const accepted = target.terms.checked;
-    console.log(name, email, password, accepted);
     const strongPasswordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?#&])[A-Za-z\d@$!%*?#&]{6,}$/;
     setError('');
-    setSuccess('');
     if (password.length < 6) {
       setError('Your password should be at least 6 characters long.');
+      return;
     } else if (!/(?=.*[A-Z])/.test(password)) {
       setError('Your password should have contain at least one uppercase letter.');
+      return;
     } else if (!/(?=.*[a-z])/.test(password)) {
       setError('Your password should have contain at least one lowercase letter.');
+      return;
     } else if (!/(?=.*\d)/.test(password)) {
       setError('Your password should have contain at least one number.');
+      return;
     } else if (!/(?=.*[@$!%*?#&])/.test(password)) {
       setError('Your password should have contain at least one special character.');
+      return;
     } else if (!strongPasswordRegex.test(password)) {
       setError('Your password is invalid.');
+      return;
     } else {
       setError('');      
     }
 
-    createUserWithEmailAndPassword(auth, email, password)
+    signUp(email, password)
     .then((res) =>{
       updateProfile(res.user,{
         displayName: name
@@ -54,6 +56,10 @@ const SignUp = () => {
       sendEmailVerification(res.user)
       .then(()=>{})
       .catch(()=>{})
+      if(loading){
+        return <span className="loading loading-ring loading-lg"></span>
+      }
+      target.reset();
       toast.success("Account created successfully. And we have sent an email to your registered email address, please verify your email.");
     })
     .catch((err) =>{
